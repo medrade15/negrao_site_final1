@@ -1,29 +1,26 @@
-// Seleciona o botão do menu hamburguer (ícone) e adiciona o evento para abrir/fechar o menu
+// Seleciona o botão do menu hambúrguer pelo ID e adiciona evento de clique
 document.getElementById('hamburger').addEventListener('click', () => {
+    // Alterna a classe 'active' no menu de navegação para mostrar ou esconder o menu
     document.getElementById('nav-menu').classList.toggle('active');
 });
 
-// Para cada botão de serviço (classe select-button), adiciona evento de clique para abrir WhatsApp
+// Seleciona todos os botões com a classe 'select-button' (botões de agendamento)
 document.querySelectorAll('.select-button').forEach(btn => {
     btn.addEventListener('click', () => {
-        // Pega o card do serviço mais próximo
+        // Pega o card do serviço relacionado ao botão clicado
         const card = btn.closest('.service-card');
-
-        // Pega o nome do serviço (h3), preço (atributo data-price) e descrição (primeiro parágrafo)
+        // Obtém nome do serviço
         const serviceName = card.querySelector('h3').textContent;
+        // Obtém o preço do serviço (atributo data-price)
         const price = card.getAttribute('data-price');
+        // Obtém a descrição do serviço (primeiro parágrafo)
         const description = card.querySelector('p').textContent;
-
-        // Número de telefone (sem o +), ajuste se precisar
-        const phone = '559491831500';
-
-        // Monta a mensagem formatada para o WhatsApp
+        // Seu número de telefone para contato (ajuste conforme necessário)
+        const phone = '5594991831500';
+        // Mensagem que será enviada no WhatsApp (URL codificada)
         const message = `Olá! Gostaria de agendar o serviço: ${serviceName} - ${description}. Valor: R$ ${price}.`;
-
-        // Monta o link do WhatsApp com a mensagem codificada
         const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-        // Abre o link do WhatsApp em uma nova aba
+        // Abre uma nova aba com o link do WhatsApp
         window.open(whatsappLink, '_blank');
     });
 });
