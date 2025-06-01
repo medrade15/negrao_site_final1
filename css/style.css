@@ -107,3 +107,14 @@ nav {
     margin-right: 10px;
     animation: pulse 2s infinite;
 }
+@media (max-width: 600px) {
+    .nav-menu {
+        flex-direction: column;
+        gap: 0.3rem;
+        font-size: 0.8rem;
+    }
+
+    .nav-menu a {
+        padding: 0.2rem;
+    }
+}
