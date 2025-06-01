@@ -14,4 +14,11 @@ document.querySelectorAll('.select-button').forEach(btn => {
         const whatsappLink = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         window.open(whatsappLink, '_blank');
     });
-});
+
+
+  const toggle = document.getElementById('menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  toggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
