@@ -1,5 +1,5 @@
-// Seleciona o botão do menu hambúrguer pelo ID e adiciona evento de clique
-document.getElementById('hamburger').addEventListener('click', () => {
+// Seleciona o botão do menu pelo ID 'menu-toggle' e adiciona evento de clique
+document.getElementById('menu-toggle').addEventListener('click', () => {
     // Alterna a classe 'active' no menu de navegação para mostrar ou esconder o menu
     document.getElementById('nav-menu').classList.toggle('active');
 });
