@@ -118,3 +118,39 @@ nav {
         padding: 0.2rem;
     }
 }
+/* Esconde o botão em telas grandes */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #fff;
+}
+
+/* Menu padrão (PC) */
+.nav-menu {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Regras para telas pequenas */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block; /* mostra o ícone hambúrguer */
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #000;
+    flex-direction: column;
+    width: 200px;
+    padding: 1rem;
+    z-index: 1001;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+}
