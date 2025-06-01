@@ -17,13 +17,14 @@ body {
     backdrop-filter: blur(15px);
     border-bottom: 1px solid #333;
     color: #fff;
+    box-sizing: border-box; /* ADICIONADO */
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px; /* Limita largura e centraliza */
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 1rem;
 }
@@ -55,12 +56,19 @@ nav {
     animation: pulse 2s infinite;
 }
 
+/* ANIMAÇÃO PULSE ADICIONADA */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
 .nav-menu {
-  list-style: none;
+    list-style: none;
     display: flex;
     gap: 2rem;
-    justify-content: center; /* Centraliza horizontalmente os itens do menu */
-    margin: 0 auto;          /* Centraliza o container do menu */
+    justify-content: center;
+    margin: 0 auto;
     padding: 0;
 }
 
@@ -68,52 +76,104 @@ nav {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease; /* ADICIONADO */
 }
 
-/* Responsividade do menu */
+.nav-menu a:hover {
+    color: #ff0000; /* ADICIONADO */
+}
+
+/* MENU TOGGLE CORRIGIDO */
 .menu-toggle {
-    display: none; /* Escondido no desktop */
+    display: none;
     font-size: 1.8rem;
     cursor: pointer;
     color: #fff;
     background-color: #ff0000;
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
+    padding: 0.5rem 0.8rem; /* AUMENTADO */
+    border-radius: 5px; /* AUMENTADO */
     user-select: none;
     border: none;
-    margin-right: 1rem;
+    transition: background-color 0.3s ease; /* ADICIONADO */
 }
 
+.menu-toggle:hover {
+    background-color: #cc0000; /* ADICIONADO */
+}
+
+/* MEDIA QUERIES CORRIGIDAS */
 @media (max-width: 768px) {
     .menu-toggle {
-        display: block; /* Aparece no mobile */
+        display: block;
     }
 
     .nav-menu {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #000;
+        position: fixed; /* MUDADO DE ABSOLUTE PARA FIXED */
+        top: 80px; /* AJUSTADO */
+        right: -100%; /* POSIÇÃO INICIAL FORA DA TELA */
+        background-color: #1a1a1a; /* COR MELHORADA */
         flex-direction: column;
-        width: 200px;
-        padding: 1rem;
+        width: 250px; /* LARGURA AUMENTADA */
+        height: calc(100vh - 80px); /* ALTURA COMPLETA */
+        padding: 2rem 1rem; /* PADDING MELHORADO */
         z-index: 1001;
-        border-radius: 0 0 0 10px;
-        margin: 0; /* remove margin para não interferir */
-        flex: unset; /* remove flex para mobile */
-        justify-content: unset;
+        border-radius: 10px 0 0 10px; /* BORDER RADIUS MELHORADO */
+        margin: 0;
+        gap: 1.5rem; /* GAP ENTRE ITENS */
+        justify-content: flex-start; /* ALINHAMENTO NO TOPO */
+        align-items: center;
+        transition: right 0.3s ease; /* TRANSIÇÃO SUAVE */
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5); /* SOMBRA */
     }
 
     .nav-menu.active {
-        display: flex;
+        right: 0; /* APARECE NA TELA */
+        display: flex; /* MANTÉM DISPLAY FLEX */
+    }
+
+    .nav-menu li {
+        width: 100%; /* LARGURA COMPLETA */
+        text-align: center; /* CENTRALIZADO */
+    }
+
+    .nav-menu a {
+        padding: 1rem; /* PADDING MAIOR PARA MOBILE */
+        font-size: 1.1rem; /* FONTE MAIOR */
+        display: block; /* DISPLAY BLOCK */
+        width: 100%; /* LARGURA COMPLETA */
+        border-radius: 5px; /* BORDAS ARREDONDADAS */
+        transition: background-color 0.3s ease; /* TRANSIÇÃO */
+    }
+
+    .nav-menu a:hover {
+        background-color: #333; /* BACKGROUND NO HOVER */
+        color: #ff0000;
+    }
+
+    /* AJUSTE DO LOGO NO MOBILE */
+    .logo {
+        font-size: 1.5rem; /* FONTE MENOR NO MOBILE */
+    }
+
+    .logo-icon {
+        width: 40px; /* ÍCONE MENOR NO MOBILE */
+        height: 40px;
     }
 }
 
 @media (max-width: 600px) {
+    .header {
+        padding: 0.5rem 1rem; /* PADDING MENOR */
+    }
+
+    .nav-menu {
+        width: 200px; /* LARGURA MENOR EM TELAS MUITO PEQUENAS */
+        top: 70px; /* AJUSTE DA POSIÇÃO */
+    }
+
     .nav-menu a {
-        padding: 0.2rem;
-        font-size: 0.8rem;
+        padding: 0.8rem;
+        font-size: 1rem;
     }
 }
 
@@ -130,8 +190,18 @@ nav {
     text-shadow: 0 0 10px #ff0000, 0 0 20px #fff, 0 0 30px #fff;
 }
 
+.hero-content h1 {
+    font-size: 3rem; /* ADICIONADO */
+    margin-bottom: 1rem; /* ADICIONADO */
+}
+
+.hero-content p {
+    font-size: 1.5rem; /* ADICIONADO */
+    margin-bottom: 2rem; /* ADICIONADO */
+}
+
 .cta-button {
-    background: linear-gradient(45deg, #000, #000);
+    background: linear-gradient(45deg, #ff0000, #cc0000); /* MELHORADO */
     color: #fff;
     padding: 1rem 2rem;
     border-radius: 50px;
@@ -139,6 +209,16 @@ nav {
     font-weight: bold;
     margin-top: 1rem;
     display: inline-block;
+    transition: transform 0.3s ease; /* ADICIONADO */
+}
+
+.cta-button:hover {
+    transform: translateY(-2px); /* EFEITO HOVER */
+}
+
+/* SEÇÕES */
+.LAVAGENS {
+    padding-top: 100px; /* ESPAÇO PARA O HEADER FIXO */
 }
 
 .services-grid {
@@ -152,21 +232,32 @@ nav {
 
 .service-card {
     background: #111;
-    padding: 1rem;
+    padding: 1.5rem; /* PADDING AUMENTADO */
     border-radius: 10px;
     text-align: center;
     color: #fff;
     box-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
+    transition: transform 0.3s ease; /* ADICIONADO */
+}
+
+.service-card:hover {
+    transform: translateY(-5px); /* EFEITO HOVER */
 }
 
 .select-button {
     background: #25D366;
     color: white;
     padding: 0.8rem 1.5rem;
+    border: none; /* ADICIONADO */
     border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
     margin-top: 1rem;
+    transition: background-color 0.3s ease; /* ADICIONADO */
+}
+
+.select-button:hover {
+    background: #1da851; /* COR MAIS ESCURA NO HOVER */
 }
 
 .contact, .footer {
@@ -176,6 +267,15 @@ nav {
     padding: 2rem;
 }
 
+.section-title {
+    text-align: center; /* CORRIGIDO - ERA "decoration" */
+    font-weight: bold;
+    font-size: 2.5rem; /* ADICIONADO */
+    margin: 2rem 0; /* ADICIONADO */
+    color: #ff0000; /* ADICIONADO */
+}
+
+/* ANIMAÇÃO SPINNER */
 .spinner {
     width: 50px;
     height: 50px;
@@ -184,11 +284,28 @@ nav {
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
-    .section-title {
-         text-decoration: center;
-    font-weight: bold;
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
+
+/* RESPONSIVIDADE GERAL */
+@media (max-width: 480px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* UMA COLUNA EM TELAS PEQUENAS */
+        padding: 1rem;
+    }
     
+    .service-card {
+        padding: 1rem;
+    }
     
+    .hero-content h1 {
+        font-size: 2rem;
+    }
     
-    
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+}
