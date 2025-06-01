@@ -17,7 +17,7 @@ body {
     backdrop-filter: blur(15px);
     border-bottom: 1px solid #333;
     color: #fff;
-    box-sizing: border-box; /* ADICIONADO */
+    box-sizing: border-box;
 }
 
 .nav-container {
@@ -56,13 +56,13 @@ nav {
     animation: pulse 2s infinite;
 }
 
-/* ANIMAÇÃO PULSE ADICIONADA */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.05); }
     100% { transform: scale(1); }
 }
 
+/* MENU DESKTOP (padrão) */
 .nav-menu {
     list-style: none;
     display: flex;
@@ -76,104 +76,102 @@ nav {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease; /* ADICIONADO */
+    transition: color 0.3s ease;
 }
 
 .nav-menu a:hover {
-    color: #ff0000; /* ADICIONADO */
+    color: #ff0000;
 }
 
-/* MENU TOGGLE CORRIGIDO */
+/* MENU TOGGLE */
 .menu-toggle {
     display: none;
     font-size: 1.8rem;
     cursor: pointer;
     color: #fff;
     background-color: #ff0000;
-    padding: 0.5rem 0.8rem; /* AUMENTADO */
-    border-radius: 5px; /* AUMENTADO */
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
     user-select: none;
     border: none;
-    transition: background-color 0.3s ease; /* ADICIONADO */
+    transition: background-color 0.3s ease;
 }
 
 .menu-toggle:hover {
-    background-color: #cc0000; /* ADICIONADO */
+    background-color: #cc0000;
 }
 
-/* MEDIA QUERIES CORRIGIDAS */
+/* MENU MOBILE */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
     }
 
     .nav-menu {
-        position: fixed; /* MUDADO DE ABSOLUTE PARA FIXED */
-        top: 80px; /* AJUSTADO */
-        right: -100%; /* POSIÇÃO INICIAL FORA DA TELA */
-        background-color: #1a1a1a; /* COR MELHORADA */
+        position: fixed;
+        top: 80px;
+        right: -100%;
+        background-color: #1a1a1a;
         flex-direction: column;
-        width: 250px; /* LARGURA AUMENTADA */
-        height: calc(100vh - 80px); /* ALTURA COMPLETA */
-        padding: 2rem 1rem; /* PADDING MELHORADO */
+        width: 250px;
+        height: calc(100vh - 80px);
+        padding: 2rem 1rem;
         z-index: 1001;
-        border-radius: 10px 0 0 10px; /* BORDER RADIUS MELHORADO */
+        border-radius: 10px 0 0 10px;
         margin: 0;
-        gap: 1.5rem; /* GAP ENTRE ITENS */
-        justify-content: flex-start; /* ALINHAMENTO NO TOPO */
+        gap: 1.5rem;
+        justify-content: flex-start;
         align-items: center;
-        transition: right 0.3s ease; /* TRANSIÇÃO SUAVE */
-        box-shadow: -5px 0 15px rgba(0,0,0,0.5); /* SOMBRA */
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
     }
 
     .nav-menu.active {
-        right: 0; /* APARECE NA TELA */
-        display: flex; /* MANTÉM DISPLAY FLEX */
+        right: 0;
+        display: flex;
     }
 
     .nav-menu li {
-        width: 100%; /* LARGURA COMPLETA */
-        text-align: center; /* CENTRALIZADO */
+        width: 100%;
+        text-align: center;
     }
 
     .nav-menu a {
-        padding: 1rem; /* PADDING MAIOR PARA MOBILE */
-        font-size: 1.1rem; /* FONTE MAIOR */
-        display: block; /* DISPLAY BLOCK */
-        width: 100%; /* LARGURA COMPLETA */
-        border-radius: 5px; /* BORDAS ARREDONDADAS */
-        transition: background-color 0.3s ease; /* TRANSIÇÃO */
+        padding: 1rem;
+        font-size: 1.1rem;
+        display: block;
+        width: 100%;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
     }
 
     .nav-menu a:hover {
-        background-color: #333; /* BACKGROUND NO HOVER */
+        background-color: #333;
         color: #ff0000;
     }
 
-    /* AJUSTE DO LOGO NO MOBILE */
     .logo {
-        font-size: 1.5rem; /* FONTE MENOR NO MOBILE */
+        font-size: 1.5rem;
     }
 
     .logo-icon {
-        width: 40px; /* ÍCONE MENOR NO MOBILE */
+        width: 40px;
         height: 40px;
     }
 }
 
-@media (max-width: 600px) {
-    .header {
-        padding: 0.5rem 1rem; /* PADDING MENOR */
-    }
-
+/* MENU DESKTOP FORÇADO EM TELAS MAIORES */
+@media (min-width: 769px) {
     .nav-menu {
-        width: 200px; /* LARGURA MENOR EM TELAS MUITO PEQUENAS */
-        top: 70px; /* AJUSTE DA POSIÇÃO */
+        position: static;
+        right: auto;
+        height: auto;
+        flex-direction: row;
+        display: flex !important;
     }
 
-    .nav-menu a {
-        padding: 0.8rem;
-        font-size: 1rem;
+    #menu-toggle {
+        display: none;
     }
 }
 
@@ -191,17 +189,17 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: 3rem; /* ADICIONADO */
-    margin-bottom: 1rem; /* ADICIONADO */
+    font-size: 3rem;
+    margin-bottom: 1rem;
 }
 
 .hero-content p {
-    font-size: 1.5rem; /* ADICIONADO */
-    margin-bottom: 2rem; /* ADICIONADO */
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .cta-button {
-    background: linear-gradient(45deg, #ff0000, #cc0000); /* MELHORADO */
+    background: linear-gradient(45deg, #ff0000, #cc0000);
     color: #fff;
     padding: 1rem 2rem;
     border-radius: 50px;
@@ -209,16 +207,15 @@ nav {
     font-weight: bold;
     margin-top: 1rem;
     display: inline-block;
-    transition: transform 0.3s ease; /* ADICIONADO */
+    transition: transform 0.3s ease;
 }
 
 .cta-button:hover {
-    transform: translateY(-2px); /* EFEITO HOVER */
+    transform: translateY(-2px);
 }
 
-/* SEÇÕES */
 .LAVAGENS {
-    padding-top: 100px; /* ESPAÇO PARA O HEADER FIXO */
+    padding-top: 100px;
 }
 
 .services-grid {
@@ -232,32 +229,32 @@ nav {
 
 .service-card {
     background: #111;
-    padding: 1.5rem; /* PADDING AUMENTADO */
+    padding: 1.5rem;
     border-radius: 10px;
     text-align: center;
     color: #fff;
     box-shadow: 0 0 10px #FFD700, 0 0 20px #FFA500;
-    transition: transform 0.3s ease; /* ADICIONADO */
+    transition: transform 0.3s ease;
 }
 
 .service-card:hover {
-    transform: translateY(-5px); /* EFEITO HOVER */
+    transform: translateY(-5px);
 }
 
 .select-button {
     background: #25D366;
     color: white;
     padding: 0.8rem 1.5rem;
-    border: none; /* ADICIONADO */
+    border: none;
     border-radius: 25px;
     cursor: pointer;
     font-weight: bold;
     margin-top: 1rem;
-    transition: background-color 0.3s ease; /* ADICIONADO */
+    transition: background-color 0.3s ease;
 }
 
 .select-button:hover {
-    background: #1da851; /* COR MAIS ESCURA NO HOVER */
+    background: #1da851;
 }
 
 .contact, .footer {
@@ -268,14 +265,13 @@ nav {
 }
 
 .section-title {
-    text-align: center; /* CORRIGIDO - ERA "decoration" */
+    text-align: center;
     font-weight: bold;
-    font-size: 2.5rem; /* ADICIONADO */
-    margin: 2rem 0; /* ADICIONADO */
-    color: #ff0000; /* ADICIONADO */
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    color: #ff0000;
 }
 
-/* ANIMAÇÃO SPINNER */
 .spinner {
     width: 50px;
     height: 50px;
@@ -290,21 +286,21 @@ nav {
     100% { transform: rotate(360deg); }
 }
 
-/* RESPONSIVIDADE GERAL */
+/* RESPONSIVIDADE EXTRA */
 @media (max-width: 480px) {
     .services-grid {
-        grid-template-columns: 1fr; /* UMA COLUNA EM TELAS PEQUENAS */
+        grid-template-columns: 1fr;
         padding: 1rem;
     }
-    
+
     .service-card {
         padding: 1rem;
     }
-    
+
     .hero-content h1 {
         font-size: 2rem;
     }
-    
+
     .hero-content p {
         font-size: 1.2rem;
     }
