@@ -73,7 +73,7 @@ nav {
 /* Responsividade do menu */
 .menu-toggle {
     display: none; /* Escondido no desktop */
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
     color: #fff;
     background-color: #ff0000;
@@ -81,6 +81,7 @@ nav {
     border-radius: 4px;
     user-select: none;
     border: none;
+    margin-right: 1rem;
 }
 
 @media (max-width: 768px) {
